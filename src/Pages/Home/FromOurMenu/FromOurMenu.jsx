@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
-import Menu from "../../../Shared/Menu/Menu";
+
 import SectionTitle from "../../../components/SectionTitle";
 
-const FormOurMenu = () => {
+import SharedMenu from "../../../Shared/SharedMenu/SharedMenu";
+
+const FormOurMenu = ({category}) => {
     const [menu, setMenu] = useState([]);
 
     useEffect(() => {
         fetch('../../../public/menu.json')
         .then(res => res.json())
         .then(data => {
-            const menu = data.filter(item => item.category == "popular")
+            const menu = data.filter(item => item.category == category)
             console.log(menu);
             setMenu(menu)
             console.log(data);
@@ -25,7 +27,7 @@ const FormOurMenu = () => {
             ></SectionTitle>
             <div className="grid lg:grid-cols-2 gap-5">
                  {
-                menu.map(item => <Menu key={item._id} item={item}></Menu>)
+                menu.map(item => <SharedMenu key={item._id} item={item}></SharedMenu>)
                 
                 }
             </div>

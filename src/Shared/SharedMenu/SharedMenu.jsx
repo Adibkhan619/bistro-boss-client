@@ -1,5 +1,8 @@
 
-const Menu = ({item}) => {
+
+
+
+const SharedMenu = ({item}) => {
     const {name, price, category, image, recipe, _id} = item;
 console.log(item);
     return (
@@ -14,4 +17,4 @@ console.log(item);
     );
 };
 
-export default Menu;
+export default SharedMenu;
