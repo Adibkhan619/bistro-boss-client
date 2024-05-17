@@ -1,5 +1,6 @@
 import Banner from "./Banner/Banner";
 import Category from "./Category/Category";
+import MenuItem from "./FromOurMenu/FromOurMenu";
 
 const Home = () => {
     return (
@@ -7,6 +8,7 @@ const Home = () => {
             <Banner></Banner>
 
             <Category></Category>
+            <MenuItem></MenuItem>
         </div>
     );
 };
