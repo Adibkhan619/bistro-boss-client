@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from 'sweetalert2'
 
 const SignUp = () => {
     const { createUser } = useContext(AuthContext);
@@ -14,6 +15,12 @@ const SignUp = () => {
 
         createUser(email, password).then((result) => {
             const user = result.user;
+            Swal.fire({
+                title: 'Successfully Registered!',
+                // text: 'Do you want to continue',
+                icon: 'success',
+                confirmButtonText: 'Cool'
+              })
             console.log(user);
         });
     };
