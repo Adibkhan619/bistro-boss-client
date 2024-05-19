@@ -2,7 +2,7 @@
 import { Helmet } from 'react-helmet-async';
 import Cover from '../../Shared/Cover/Cover';
 import menuBanner from "../../assets/menu/banner3.jpg"
-import SharedMenu from '../../Shared/SharedMenu/SharedMenu';
+// import SharedMenu from '../../Shared/SharedMenu/SharedMenu';
 import FromOurMenu from '../Home/FromOurMenu/FromOurMenu';
 import pizzaBg from "../../assets/menu/pizza-bg.jpg"
 import soupBg from "../../assets/menu/soup-bg.jpg"
