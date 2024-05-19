@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-
+import { useContext, useEffect, useRef, useState } from "react";
+import AuthContext from "../../Provider/AuthProvider";
 import {
     loadCaptchaEnginge,
     LoadCanvasTemplate,
@@ -7,14 +7,14 @@ import {
 } from "react-simple-captcha";
 
 const Login = () => {
+    const { logIn } = useContext(AuthContext);
 
-    const [disabled, setDisabled] = useState(true)
+    const [disabled, setDisabled] = useState(true);
     useEffect(() => {
         loadCaptchaEnginge(6);
     }, []);
 
-    const captchaRef = useRef(null)
-
+    const captchaRef = useRef(null);
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -22,14 +22,19 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password);
+
+        logIn(email, password).then((result) => {
+            const user = result.user;
+            console.log(user);
+        });
     };
 
     const handleValidateCaptcha = () => {
         const user_captcha_value = captchaRef.current.value;
-        if(validateCaptcha(user_captcha_value)){
-            setDisabled(false)
-        }else{
-            setDisabled(true)
+        if (validateCaptcha(user_captcha_value)) {
+            setDisabled(false);
+        } else {
+            setDisabled(true);
         }
     };
 
@@ -90,7 +95,11 @@ const Login = () => {
                             </button>
                         </div>
                         <div className="form-control mt-6">
-                            <button type="submit" disabled={disabled} className="btn btn-primary">
+                            <button
+                                type="submit"
+                                disabled={disabled}
+                                className="btn btn-primary"
+                            >
                                 Login
                             </button>
                         </div>

@@ -1,29 +1,55 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Navbar = () => {
-    const navOptions = 
+    const { user, logOut } = useContext(AuthContext);
+    const handleLogOut = () => {
+        logOut().then().catch();
+    };
+    const navOptions = (
         <>
             <li>
-                <Link to ="/">Home</Link>
+                <Link to="/">Home</Link>
             </li>
             <li>
                 <a href="">Contact Us</a>
             </li>
-            <li>
+            {/* <li>
                 <a>Dashboard</a>
+            </li> */}
+            <li>
+                <Link to="/menu">Our Menu</Link>
             </li>
             <li>
-                <Link to ="/menu">Our Menu</Link>
+                <Link to="/signUp">Sign Up</Link>
+            </li>
+
+            {user ? (
+                <>
+                    <li>
+                        <Link onClick={handleLogOut} className="">
+                            Log Out
+                        </Link>
+                    </li>
+                </>
+            ) : (
+                <>
+                    {" "}
+                    <li>
+                        <Link to="/login">Login</Link>
+                    </li>
+                </>
+            )}
+
+            <li>
+                <Link to="/login">Login</Link>
             </li>
             <li>
-                <Link to ="/login">Login</Link>
-            </li>
-            <li>
-                <Link to ="/order/salad">Our Orders</Link>
+                <Link to="/order/salad">Our Orders</Link>
             </li>
         </>
-    ;
-
+    );
     return (
         <div>
             <div className="navbar  fixed z-10 max-w-screen-2xl bg-black bg-opacity-30 text-white">
@@ -52,18 +78,15 @@ const Navbar = () => {
                         <ul
                             tabIndex={0}
                             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-                        >{navOptions}</ul>
-                        
+                        >
+                            {navOptions}
+                        </ul>
                     </div>
                     <a className="btn btn-ghost text-xl">daisyUI</a>
                 </div>
-                <div className="navbar-center hidden lg:flex">
-                    
-                </div>
+                <div className="navbar-center hidden lg:flex"></div>
                 <div className="navbar-end">
-                    <ul className="menu menu-horizontal px-1">
-                        {navOptions}
-                    </ul>
+                    <ul className="menu menu-horizontal px-1">{navOptions}</ul>
                     <a className="btn">Button</a>
                 </div>
             </div>
