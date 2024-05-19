@@ -8,15 +8,19 @@ import FoodCard from "../../Shared/FoodCard/FoodCard";
 import { useParams } from "react-router-dom";
 
 const Orders = () => {
-    const [tabIndex, setTabIndex] = useState(0);
-    const [menu] = useMenu();
+    const categories = [ 'salad', 'pizza', 'soup', 'dessert', 'drinks']
     const {category} = useParams()
+    const initialIndex = categories.indexOf(category)
+    const [tabIndex, setTabIndex] = useState(initialIndex);
+    const [menu] = useMenu();
+    
+    console.log(category);
     console.log(menu);
     return (
         <div>
             <Cover image={orderBanner} title="Our Orders"></Cover>
             <Tabs
-                selectedIndex={tabIndex}
+                defaultIndex={tabIndex}
                 onSelect={(index) => setTabIndex(index)}
             >
                 <TabList className="mx-24 flex justify-center mt-24 gap-5">

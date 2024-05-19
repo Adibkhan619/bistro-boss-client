@@ -32,7 +32,7 @@ const FromOurMenu = ({category}) => {
                 
                 }
             </div>
-           <Link to ={`order/${category}`}><button>Order Now!</button></Link>
+           <Link to ={`/order/${category}`}><button>Order Now!</button></Link>
         </div>
     );
 };
