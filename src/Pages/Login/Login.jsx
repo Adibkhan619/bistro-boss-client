@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import {
     loadCaptchaEnginge,
@@ -6,9 +6,13 @@ import {
     validateCaptcha,
 } from "react-simple-captcha";
 import Swal from "sweetalert2";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
     const { logIn } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
     const [disabled, setDisabled] = useState(true);
     useEffect(() => {
@@ -33,19 +37,18 @@ const Login = () => {
                     icon: "success",
                     confirmButtonText: "Cool",
                 });
+                navigate(from, { replace: true });
                 console.log(user);
             })
-            .catch( error => {
+            .catch((error) => {
                 console.log(error);
-               Swal.fire({
+                Swal.fire({
                     title: "Login Failed!",
                     // text: {error.message},
                     icon: "error",
                     confirmButtonText: "Cool",
-                }); 
-            }
-                
-            );
+                });
+            });
     };
 
     const handleValidateCaptcha = (e) => {

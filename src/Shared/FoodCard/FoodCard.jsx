@@ -1,9 +1,17 @@
 import useMenu from "../../Hooks/useMenu";
+import useAuth from "../../Hooks/useAuth";
 
 const FoodCard = ({ category }) => {
+    const {user} = useAuth();
+    console.log({user});
     const [menu] = useMenu();
     const food = menu.filter((item) => item.category == category);
     console.log(food);
+
+    const handleOrder = (item) => {
+        console.log(item, user);
+    }
+
     return (
         <div className="grid grid-cols-3 gap-5 mx-24 justify-center my-16">
             {food.map((item) => (
@@ -18,7 +26,7 @@ const FoodCard = ({ category }) => {
                         <p>{item.category}</p>
                         
                         <div className="card-actions justify-end">
-                            <button className="btn btn-primary">
+                            <button className="btn btn-primary" onClick={() => handleOrder(item)}>
                                 Order Now
                             </button>
                         </div>

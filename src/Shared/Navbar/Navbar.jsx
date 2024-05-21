@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { HiOutlineShoppingCart } from "react-icons/hi2";
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -12,6 +13,7 @@ const Navbar = () => {
             <li>
                 <Link to="/">Home</Link>
             </li>
+
             <li>
                 <a href="">Contact Us</a>
             </li>
@@ -25,8 +27,19 @@ const Navbar = () => {
                 <Link to="/signUp">Sign Up</Link>
             </li>
 
+            <li>
+                <Link to="/order/salad">Our Orders</Link>
+            </li>
+            
             {user ? (
                 <>
+                    
+                    <li>
+                        <button className="btn text-2xl btn-ghost">
+                        <HiOutlineShoppingCart />
+                            <div className="badge badge-primary">+0</div>
+                        </button>
+                    </li>
                     <li>
                         <Link onClick={handleLogOut} className="">
                             Log Out
@@ -41,13 +54,7 @@ const Navbar = () => {
                     </li>
                 </>
             )}
-
-            <li>
-                <Link to="/login">Login</Link>
-            </li>
-            <li>
-                <Link to="/order/salad">Our Orders</Link>
-            </li>
+            
         </>
     );
     return (
@@ -83,11 +90,12 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <a className="btn btn-ghost text-xl">daisyUI</a>
+                    {user && <p>{user?.email}</p>}
                 </div>
                 <div className="navbar-center hidden lg:flex"></div>
                 <div className="navbar-end">
                     <ul className="menu menu-horizontal px-1">{navOptions}</ul>
-                    <a className="btn">Button</a>
+                    {/* <a className="btn">Button</a> */}
                 </div>
             </div>
         </div>
