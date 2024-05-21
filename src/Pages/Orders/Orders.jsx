@@ -3,7 +3,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import Cover from "../../Shared/Cover/Cover";
 import orderBanner from "../../assets/shop/banner2.jpg";
-import useMenu from "../../Hooks/useMenu";
+// import useMenu from "../../Hooks/useMenu";
 import FoodCard from "../../Shared/FoodCard/FoodCard";
 import { useParams } from "react-router-dom";
 
@@ -12,10 +12,10 @@ const Orders = () => {
     const {category} = useParams()
     const initialIndex = categories.indexOf(category)
     const [tabIndex, setTabIndex] = useState(initialIndex);
-    const [menu] = useMenu();
+    // const [menu] = useMenu();
     
-    console.log(category);
-    console.log(menu);
+    // console.log(category);
+    // console.log(menu);
     return (
         <div>
             <Cover image={orderBanner} title="Our Orders"></Cover>

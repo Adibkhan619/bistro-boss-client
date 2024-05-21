@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { HiOutlineShoppingCart } from "react-icons/hi2";
 import useCarts from "../../Hooks/useCarts";
@@ -37,10 +37,10 @@ const Navbar = () => {
                 <>
                     
                     <li>
-                        <button className="btn text-2xl btn-ghost">
+                        <NavLink to="dashboard/cart" className="btn text-2xl btn-ghost">
                         <HiOutlineShoppingCart />
                             <div className="badge badge-primary">+{cart.length}</div>
-                        </button>
+                        </NavLink>
                     </li>
                     <li>
                         <Link onClick={handleLogOut} className="">
