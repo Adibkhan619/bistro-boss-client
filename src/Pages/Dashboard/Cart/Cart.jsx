@@ -1,11 +1,9 @@
 import {
-    HiDocumentRemove,
-    HiFolderRemove,
+
     HiTrash,
-    HiUserRemove,
+
 } from "react-icons/hi";
 import useCarts from "../../../Hooks/useCarts";
-import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
