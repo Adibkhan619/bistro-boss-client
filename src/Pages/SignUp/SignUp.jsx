@@ -1,26 +1,46 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from 'sweetalert2'
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import { Link, useNavigate } from "react-router-dom";
+import SocialLogin from "../../components/SocialLogin";
 
 const SignUp = () => {
-    const { createUser } = useContext(AuthContext);
+    const axiosPublic = useAxiosPublic()
+    const navigate = useNavigate()
+    const { createUser, updateUserProfile } = useContext(AuthContext);
 
     const handleSignUp = (e) => {
         e.preventDefault();
         const form = e.currentTarget;
         const name = form.name.value;
         const email = form.email.value;
+        const photo = form.photo.value;
         const password = form.password.value;
         console.log(name, email, password);
 
         createUser(email, password).then((result) => {
             const user = result.user;
-            Swal.fire({
+            updateUserProfile(name, photo)
+            .then(() => {
+                // create user entry in database
+                const userInfo= {name, email}
+                console.log(userInfo);
+                axiosPublic.post("/users", userInfo)
+                .then(res => {
+                    console.log(res.data);
+                    if(res.data.insertedId){
+                         Swal.fire({
                 title: 'Successfully Registered!',
                 // text: 'Do you want to continue',
                 icon: 'success',
                 confirmButtonText: 'Cool'
               })
+              navigate('/')
+                    }
+                })
+            })
+           
             console.log(user);
         });
     };
@@ -64,6 +84,18 @@ const SignUp = () => {
                         </div>
                         <div className="form-control">
                             <label className="label">
+                                <span className="label-text">Photo</span>
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="Image"
+                                name="photo"
+                                className="input input-bordered"
+                                
+                            />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
                             <input
@@ -80,6 +112,8 @@ const SignUp = () => {
                             </button>
                         </div>
                     </form>
+                    <p className="px-5 py-2">Already have an account? Please <Link to="/login" className="text-blue-600"> Login</Link></p>
+                    <SocialLogin></SocialLogin>
                 </div>
             </div>
         </div>

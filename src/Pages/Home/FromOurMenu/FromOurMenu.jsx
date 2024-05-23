@@ -13,9 +13,9 @@ const FromOurMenu = ({category}) => {
         .then(res => res.json())
         .then(data => {
             const menu = data.filter(item => item.category == category)
-            console.log(menu);
+            // console.log(menu);
             setMenu(menu)
-            console.log(data);
+            // console.log(data);
         })
 
 }, [])

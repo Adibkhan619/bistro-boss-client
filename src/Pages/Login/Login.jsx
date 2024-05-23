@@ -6,7 +6,7 @@ import {
     validateCaptcha,
 } from "react-simple-captcha";
 import Swal from "sweetalert2";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
     const { logIn } = useContext(AuthContext);
@@ -65,7 +65,7 @@ const Login = () => {
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row">
                 <div className="text-center lg:text-left ">
-                    <h1>image</h1>
+                    <h1 className="text-5xl">Login</h1>
                     <img
                         className="w-96 z-10"
                         src="../../assets/others/authentication2.png"
@@ -127,6 +127,7 @@ const Login = () => {
                             </button>
                         </div>
                     </form>
+                    <p className="px-5 py-2">New here? Please <Link to="/signUp" className="text-blue-600">Register</Link></p>
                 </div>
             </div>
         </div>

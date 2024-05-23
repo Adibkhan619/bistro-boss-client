@@ -33,15 +33,16 @@ const Navbar = () => {
                 <Link to="/order/salad">Our Orders</Link>
             </li>
             
-            {user ? (
-                <>
-                    
-                    <li>
+            <li>
                         <NavLink to="dashboard/cart" className="btn text-2xl btn-ghost">
                         <HiOutlineShoppingCart />
                             <div className="badge badge-primary">+{cart.length}</div>
                         </NavLink>
                     </li>
+            {user ? (
+                <>
+                    
+                    
                     <li>
                         <Link onClick={handleLogOut} className="">
                             Log Out
