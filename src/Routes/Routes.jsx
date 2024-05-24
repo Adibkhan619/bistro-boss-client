@@ -16,6 +16,7 @@ import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 
 
 
+
 export const router = createBrowserRouter([
     {
       path: "/",
@@ -64,3 +65,4 @@ export const router = createBrowserRouter([
         ]
     }
   ]);
+

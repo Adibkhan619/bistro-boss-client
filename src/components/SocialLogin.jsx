@@ -1,4 +1,4 @@
-
+import toast, { Toaster } from 'react-hot-toast';
 import {  FaGoogle } from 'react-icons/fa';
 // import AuthProvider from '../Provider/AuthProvider';
 import useAuth from '../Hooks/useAuth';
@@ -21,9 +21,12 @@ const SocialLogin = () => {
             axiosPublic.post('/users', userInfo)
             .then(res => {
                 console.log(res.data);
+                toast.success('Login Successful!');
                 navigate('/')
+                
             })
         })
+        
     }
     return (
         <div className=''>
@@ -33,8 +36,10 @@ const SocialLogin = () => {
                 <FaGoogle></FaGoogle>
                 Google
             </button>
+            <Toaster />,
         </div>
     );
+    
 };
 
 export default SocialLogin;

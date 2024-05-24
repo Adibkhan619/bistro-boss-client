@@ -20,7 +20,7 @@ const AllUsers = () => {
             if (res.data.modifiedCount > 0) {
                 refetch();
                 Swal.fire({
-                    title: `${user.displayName} is an Admin Now!`,
+                    title: `${user.displayName || user.name} is an Admin Now!`,
                     showClass: {
                         popup: `
                         animate__animated

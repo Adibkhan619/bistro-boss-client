@@ -7,6 +7,7 @@ import {
 } from "react-simple-captcha";
 import Swal from "sweetalert2";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import SocialLogin from "../../components/SocialLogin";
 
 const Login = () => {
     const { logIn } = useContext(AuthContext);
@@ -128,7 +129,9 @@ const Login = () => {
                         </div>
                     </form>
                     <p className="px-5 py-2">New here? Please <Link to="/signUp" className="text-blue-600">Register</Link></p>
+                    <SocialLogin></SocialLogin>
                 </div>
+                
             </div>
         </div>
     );

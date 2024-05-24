@@ -4,12 +4,13 @@ import { HiCalendar, HiHome, HiMenu, HiShoppingCart } from "react-icons/hi";
 import { HiCalendarDays, HiListBullet, HiOutlineArrowRightStartOnRectangle, HiStar, HiWallet } from "react-icons/hi2";
 import { NavLink, Outlet } from 'react-router-dom';
 import useCarts from "../Hooks/useCarts";
+import useAdmin from "../Hooks/useAdmin";
 
 const Dashboard = () => {
     const  [cart] = useCarts()
 
     // todo: get isAdmin value from the database;
-    const isAdmin = true;
+    const [isAdmin] = useAdmin();
 
 
     return (

@@ -23,6 +23,7 @@ const SignUp = () => {
             const user = result.user;
             updateUserProfile(name, photo)
             .then(() => {
+                
                 // create user entry in database
                 const userInfo= {name, email}
                 console.log(userInfo);
