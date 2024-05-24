@@ -1,6 +1,4 @@
-import {
-    createBrowserRouter,
-  } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import Main from "../layout/Main/Main";
 import Home from "../Pages/Home/Home";
 import Menu from "../Pages/Menu/Menu";
@@ -12,57 +10,71 @@ import PrivateRoutes from "./PrivateRoutes";
 import Dashboard from "../layout/Dashboard";
 import Cart from "../Pages/Dashboard/Cart/Cart";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
-
-
-
-
+import AddItems from "../Pages/Dashboard/AddItems/AddItems";
+import AdminRoutes from "./AdminRoutes";
 
 export const router = createBrowserRouter([
     {
-      path: "/",
-      element: <Main></Main>,
-      children: [
-        {
-            path: "/",
-            element: <Home></Home>
-        },
-        {
-            path: "menu",
-            element: <Menu></Menu>
-        },
-        {
-            path: "/order/:category",
-            element: <Orders></Orders>
-        },
-        {
-            path: "/login",
-            element: <Login></Login>
-        },
-        {
-            path: "signUp",
-            element: <SignUp></SignUp>
-        },
-        {
-            path: "/secret",
-            element: <PrivateRoutes><Secret></Secret></PrivateRoutes>
-        }
-      ]
+        path: "/",
+        element: <Main></Main>,
+        children: [
+            {
+                path: "/",
+                element: <Home></Home>,
+            },
+            {
+                path: "menu",
+                element: <Menu></Menu>,
+            },
+            {
+                path: "/order/:category",
+                element: <Orders></Orders>,
+            },
+            {
+                path: "/login",
+                element: <Login></Login>,
+            },
+            {
+                path: "signUp",
+                element: <SignUp></SignUp>,
+            },
+            {
+                path: "/secret",
+                element: (
+                    <PrivateRoutes>
+                        <Secret></Secret>
+                    </PrivateRoutes>
+                ),
+            },
+        ],
     },
     {
         path: "dashboard",
-        element: <PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
+        element: (
+            <PrivateRoutes>
+                <Dashboard></Dashboard>
+            </PrivateRoutes>
+        ),
         children: [
+            // * User Only Routes------->
             {
                 path: "cart",
-                element: <PrivateRoutes><Cart></Cart></PrivateRoutes>
+                element: (
+                    <PrivateRoutes>
+                        <Cart></Cart>
+                    </PrivateRoutes>
+                ),
             },
-
-            // *Admin routes------------> 
+            
+            // *Admin only routes------------>
             {
                 path: "users",
-                element: <AllUsers></AllUsers>
-            }
-        ]
-    }
-  ]);
-
+                element: <AdminRoutes><AllUsers></AllUsers></AdminRoutes>,
+            },
+            {
+                path: "addItems",
+                element: <AdminRoutes><AddItems></AddItems></AdminRoutes>,
+            },
+        ],
+    },
+]);

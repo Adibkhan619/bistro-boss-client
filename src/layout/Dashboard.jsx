@@ -1,13 +1,13 @@
 
-import { FaBook, FaEnvelope, FaLiraSign, FaList, FaListAlt, FaListOl, FaListUl, FaShoppingBag, FaThList, FaUsers, FaUtensils } from "react-icons/fa";
+import { FaBook, FaEnvelope,  FaListUl, FaShoppingBag,  FaUsers, FaUtensils } from "react-icons/fa";
 import { HiCalendar, HiHome, HiMenu, HiShoppingCart } from "react-icons/hi";
-import { HiCalendarDays, HiListBullet, HiOutlineArrowRightStartOnRectangle, HiStar, HiWallet } from "react-icons/hi2";
+import { HiCalendarDays, HiStar, HiWallet } from "react-icons/hi2";
 import { NavLink, Outlet } from 'react-router-dom';
-import useCarts from "../Hooks/useCarts";
+// import useCarts from "../Hooks/useCarts";
 import useAdmin from "../Hooks/useAdmin";
 
 const Dashboard = () => {
-    const  [cart] = useCarts()
+    // const  [cart] = useCarts()
 
     // todo: get isAdmin value from the database;
     const [isAdmin] = useAdmin();
@@ -22,7 +22,7 @@ const Dashboard = () => {
                         isAdmin? 
                         <>
                         <li><NavLink to="/dashboard/adminHome"><HiHome/>   Admin Home</NavLink></li>
-                    <li><NavLink to="/dashboard/addItem"><FaUtensils />  Add Item</NavLink></li>
+                    <li><NavLink to="/dashboard/addItems"><FaUtensils />  Add Item</NavLink></li>
                     <li><NavLink to="/dashboard/manageItems"><FaListUl />manage Items</NavLink></li>
                     <li><NavLink to="/dashboard/bookings"><FaBook />Manage Bookings</NavLink></li>
                     <li><NavLink to="/dashboard/users"><FaUsers />All Users</NavLink></li>
