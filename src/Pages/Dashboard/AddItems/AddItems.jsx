@@ -125,7 +125,7 @@ const AddItems = () => {
         <div>
             <input {...register("image", {required: true})} type="file" className="file-input w-full max-w-xs" />
         </div>
-                <button className="btn-wide btn bg-orange-300 text-lg"><FaUtensils></FaUtensils>Add Item</button>
+                <button type="submit" className="btn-wide btn bg-orange-300 text-lg"><FaUtensils></FaUtensils>Add Item</button>
             </form>
         </div>
     );
