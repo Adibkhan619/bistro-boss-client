@@ -3,11 +3,11 @@ import { FaBook, FaEnvelope,  FaListUl, FaShoppingBag,  FaUsers, FaUtensils } fr
 import { HiCalendar, HiHome, HiMenu, HiShoppingCart } from "react-icons/hi";
 import { HiCalendarDays, HiStar, HiWallet } from "react-icons/hi2";
 import { NavLink, Outlet } from 'react-router-dom';
-// import useCarts from "../Hooks/useCarts";
+import useCarts from "../Hooks/useCarts";
 import useAdmin from "../Hooks/useAdmin";
 
 const Dashboard = () => {
-    // const  [cart] = useCarts()
+    const  [cart] = useCarts()
 
     // todo: get isAdmin value from the database;
     const [isAdmin] = useAdmin();
@@ -32,8 +32,8 @@ const Dashboard = () => {
                         <>
                         <li><NavLink to="/dashboard/userHome"><HiHome/>   My Home</NavLink></li>
                     <li><NavLink to="/dashboard/reservation"><HiCalendar />   My Reservation</NavLink></li>
-                    <li><NavLink to="/dashboard/payment"><HiWallet />  Payment</NavLink></li>
-                    <li><NavLink to="/dashboard/cart"><HiShoppingCart />   My Cart</NavLink></li>
+                    <li><NavLink to="/dashboard/paymentHistory"><HiWallet />  Payment History</NavLink></li>
+                    <li><NavLink to="/dashboard/cart"><HiShoppingCart />   My Cart ({cart.length})</NavLink></li>
                     <li><NavLink to="/dashboard/review"><HiStar />  Add Review</NavLink></li>
                     <li><NavLink to="/dashboard/bookings"><HiCalendarDays />  Booking</NavLink></li>
                         </>
