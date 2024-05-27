@@ -1,8 +1,11 @@
 .featured-img{
     background-image: url("../../../assets/home/featured.jpg");
-    /* opacity: .5;
+    /* opacity: .95;
+    ,
    background: black; */
    
+   position: relative;
    
 
 }
+
