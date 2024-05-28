@@ -21,12 +21,12 @@ const FromOurMenu = ({category}) => {
 }, [])
 
     return (
-        <div className="mb-12">
+        <div className="my-24">
             <SectionTitle 
                 subHeading="Check it out"
                 heading="From Our Menu"
             ></SectionTitle>
-            <div className="grid lg:grid-cols-2 gap-5 lg:mx-24 grid-rows-1 my -10">
+            <div className="grid lg:grid-cols-2 gap-5 mt-16 lg:mx-24 grid-rows-1 my -10">
                  {
                 menu.map(item => <SharedMenu key={item._id} item={item}></SharedMenu>)
                 
